@@ -1,56 +1,69 @@
+<img src="docs/logo.png" alt="Benešl Automation" width="180">
+
 # BAVIS SDK
 
-**Build drivers, symbols, screen elements and tools for BAVIS – the web SCADA you configure yourself.**
-
-> **Status: coming with BAVIS 3.1.** This repository is being prepared. The first SDK release, examples and
-> templates will be published together with BAVIS 3.1. Watch the repository to be notified.
+**Write communication drivers for BAVIS – the web SCADA you configure yourself – without access to its core.**
 
 [Česky níže](#česky)
 
-## What is BAVIS
+BAVIS is a web-based SCADA / HMI platform by [Benešl Automation](https://benesl-automation.cz). Connections, tags, alarms,
+screens, trends and reports are set up in tables and wizards instead of code. When a device or protocol is missing, you can add it
+yourself: a driver is a small Python package, built into a `.bavispkg` file and installed in **System → Projects and packages** –
+no new BAVIS release is needed.
 
-BAVIS is a web-based SCADA / HMI platform by [Benešl Automation](https://benesl-automation.cz). It runs as a service,
-operators and engineers use it from any browser, and almost everything is set up in tables and wizards instead of code:
-connections, tags, alarms, screens, trends, reports.
+* **SDK API 1.0** (`bavis.sdk`) – drivers are loaded by BAVIS **3.1 and newer**, also after the next major version of the core.
+* **`bavis sdk` command** (skeleton, check, tests, build) – in every installation of BAVIS **4.0 and newer** (Windows, Linux,
+  Docker). No core source code and no separate Python installation needed.
 
-The core is closed source. This SDK is open (Apache-2.0) so that anyone can extend BAVIS without access to the core.
+## Quick start
 
-## What you will be able to build
+```
+bavis-sdk new my_scale --label "Moje váha" --dir ~/drivers/scale    # driver, fake device, tests, translations
+bavis-sdk test ~/drivers/scale                                       # pytest against the installed core
+bavis-sdk check --strict ~/drivers/scale                             # what the build or the core would refuse
+bavis-sdk build ~/drivers/scale                                      # dist/drv_my_scale-1.0.0.bavispkg
+```
 
-BAVIS is modular. Every extension point is a small, self-describing module that the core discovers on its own.
+Windows: `C:\BAVIS\bavis-sdk.cmd …` · Linux: `/opt/bavis/bavis-sdk …` · Docker: `docker run --rm -v "$PWD:/work" -w /work --user "$(id -u):$(id -g)" <image> sdk …`
 
-| Module | What it adds |
+## What is here
+
+| Folder | Content |
 | --- | --- |
-| Communication driver | a new protocol or device: connection form, address help, connection test, browsing, device discovery, simulation |
-| Server | BAVIS publishing data to other systems |
-| Object template and faceplate | a reusable device (pump, valve, meter) with its tile and detail window |
-| Screen element | a new element for the screen editor |
-| Symbol | SVG symbols for P&ID, buildings and floor plans |
-| Device type | a ready-made device with tags, alarms and an object, inserted in one step |
-| Project template | a starting project for an industry or use case |
-| Tool | scripts and utilities around BAVIS (import, export, migration, testing) |
+| [docs/en](docs/en/README.md) | guides: getting started, your first driver, patterns, testing, building and installing, CI and publishing |
+| [docs/cs](docs/cs/README.md) | the same guides in Czech |
+| [docs/drivers.md](docs/drivers.md) | API reference (`bavis.sdk`, `bavis.sdk.testing`, package layout, versioning, rules) |
+| [examples](examples/README.md) | complete drivers with tests: HTTP JSON, SCPI instruments, UDP push sensors, CSV files |
+| [drivers](drivers/README.md) | community drivers contributed to the public catalogue |
+| [action.yml](action.yml) | GitHub Action: check, test and build driver packages with the BAVIS Docker image |
 
-Drivers can be shipped as a signed `.bavispkg` package of type `drivers` and installed in
-**System → Projects and packages** without a new BAVIS release.
+## Examples
 
-## Planned content
+| Example | Shows |
+| --- | --- |
+| [http_json](examples/http_json) | one HTTP request per cycle, address = path in a JSON document, custom field, connection test |
+| [scpi](examples/scpi) | text protocol over TCP (lab instruments), a link shared by reads and writes, guarded writes checked with `SYST:ERR?` |
+| [udp_json](examples/udp_json) | a device that pushes data, only `open` / `close` / `poll`, value age, sender filter |
+| [csv_file](examples/csv_file) | no network (`transport="none"`), files in the data folder, tag import by browsing, caching |
 
-```
-docs/        how modules work, step-by-step guides, API reference
-templates/   starting skeletons for each module type
-examples/    complete example modules with tests
-tools/       helper tools for building, testing and packaging modules
-```
+Every example passes `bavis-sdk check --strict` and its own tests.
+
+## What the SDK does not cover yet
+
+SDK 1.0 is for communication drivers. Symbols, device types, screens and report templates are shared as catalogue *parts*
+exported from a project, without programming. Servers (BAVIS publishing data elsewhere) and custom screen elements are not
+part of the SDK yet.
 
 ## Contributing
 
-Community drivers, symbols, device types and tools are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first.
-Modules accepted into the public catalogue are reviewed and signed by Benešl Automation.
+Community drivers are welcome – read [CONTRIBUTING.md](CONTRIBUTING.md). Drivers accepted into the public catalogue are reviewed
+and signed by Benešl Automation.
 
 ## Licence
 
-The SDK, templates and examples are licensed under the [Apache License 2.0](LICENSE).
-The BAVIS core application is proprietary and is not part of this repository.
+The SDK documentation, examples and tools are licensed under the [Apache License 2.0](LICENSE). The BAVIS core application is
+proprietary and is not part of this repository. Siemens, SIMATIC and S7 are trademarks of Siemens AG; other product names are
+trademarks of their owners and are used only to describe compatibility.
 
 ## Contact
 
@@ -62,13 +75,24 @@ The BAVIS core application is proprietary and is not part of this repository.
 
 ## Česky
 
-**BAVIS SDK** slouží k tvorbě driverů, symbolů, prvků obrazovek a nástrojů pro BAVIS, webovou SCADA, kterou si nastavíte sami.
+**BAVIS SDK** slouží k psaní komunikačních driverů pro BAVIS, webovou SCADA, kterou si nastavíte sami – bez přístupu k jádru.
+Driver je malý balíček v Pythonu, který se sestaví do souboru `.bavispkg` a nainstaluje v **Systém → Projekty a balíčky**,
+bez nové verze BAVIS.
 
-> **Stav: připravujeme k vydání BAVIS 3.1.** První verze SDK, příklady a šablony vyjdou spolu s BAVIS 3.1.
+* **SDK API 1.0** (`bavis.sdk`) – drivery načítá BAVIS **3.1 a novější**, i po další hlavní verzi jádra.
+* **Příkaz `bavis sdk`** (kostra, kontrola, testy, sestavení) je v každé instalaci BAVIS **4.0 a novější** (Windows, Linux,
+  Docker). Zdrojový kód jádra ani samostatný Python nepotřebujete.
 
-Jádro BAVIS je uzavřené, SDK je otevřené (licence Apache-2.0). Kdokoli tak může BAVIS rozšířit bez přístupu k jádru:
-o komunikační driver, server, šablonu objektu a faceplate, prvek obrazovky, symbol, typové zařízení, šablonu projektu
-nebo nástroj. Drivery jde dodat jako podepsaný balíček `.bavispkg` a nainstalovat bez nové verze BAVIS.
+```
+bavis-sdk new moje_vaha --label "Moje váha" --dir C:\vyvoj\vaha
+bavis-sdk test C:\vyvoj\vaha
+bavis-sdk check --strict C:\vyvoj\vaha
+bavis-sdk build C:\vyvoj\vaha
+```
+
+Návody česky jsou v [docs/cs](docs/cs/README.md): začínáme, první driver krok za krokem, vzory driverů, testování, sestavení
+a instalace, CI a zveřejnění. Reference API (anglicky) je [docs/drivers.md](docs/drivers.md), hotové příklady s testy
+v [examples](examples/README.md).
 
 Příspěvky komunity jsou vítané, postup je v [CONTRIBUTING.md](CONTRIBUTING.md). Kontakt:
 [benesl@benesl-automation.cz](mailto:benesl@benesl-automation.cz), web [benesl-automation.cz](https://benesl-automation.cz).

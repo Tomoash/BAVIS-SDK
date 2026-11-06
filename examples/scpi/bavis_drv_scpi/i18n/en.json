@@ -1,0 +1,19 @@
+{
+ "srv": {
+  "SCPI přístroje (příklad)": "SCPI instruments (example)",
+  "SCPI přístroj (TCP, příklad)": "SCPI instrument (TCP, example)",
+  "Povolit zápis": "Allow writes",
+  "Zápis nastavení do přístroje (napětí, proud, výstup). Vypnuto = jen čtení.": "Write settings to the instrument (voltage, current, output). Off = read only.",
+  "Konec řádku": "Line end",
+  "Ukončení příkazu – většina přístrojů přijímá LF": "Command terminator – most instruments accept LF",
+  "Příkaz SCPI: MEAS:VOLT? (dotaz, jen čtení) · VOLT (nastavení – čte VOLT?, zapisuje VOLT <hodnota>) · OUTP (výstup)": "SCPI command: MEAS:VOLT? (query, read only) · VOLT (setting – reads VOLT?, writes VOLT <value>) · OUTP (output)",
+  "adresa = příkaz SCPI, např. MEAS:VOLT? nebo VOLT": "address = SCPI command, e.g. MEAS:VOLT? or VOLT",
+  "parametr je jen u dotazu (MEAS:VOLT? (@1))": "a parameter is allowed only for a query (MEAS:VOLT? (@1))",
+  "přístroj není připojen": "instrument not connected",
+  "přístroj ukončil spojení": "the instrument closed the connection",
+  "přístroj neodpověděl na {0}": "no answer from the instrument to {0}",
+  "zápis je u spojení vypnutý (pole Povolit zápis)": "writes are disabled for this connection (field Allow writes)",
+  "{0} je dotaz – zapisovat jde jen do nastavení bez otazníku": "{0} is a query – only settings without a question mark can be written",
+  "přístroj hlásí chybu po {0}: {1}": "the instrument reports an error after {0}: {1}"
+ }
+}

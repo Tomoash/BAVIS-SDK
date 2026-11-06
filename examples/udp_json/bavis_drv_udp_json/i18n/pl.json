@@ -1,0 +1,17 @@
+{
+ "srv": {
+  "UDP JSON (příklad)": "UDP JSON (przykład)",
+  "UDP JSON – příjem dat (příklad)": "UDP JSON – odbiór danych (przykład)",
+  "Max. stáří hodnoty [s]": "Maks. wiek wartości [s]",
+  "Hodnota bez nové zprávy po tuto dobu je neplatná": "Wartość bez nowej wiadomości przez ten czas staje się nieważna",
+  "Povolený odesílatel": "Dozwolony nadawca",
+  "IP adresa zařízení; prázdné = data od kohokoli v síti": "Adres IP urządzenia; puste = dane od każdego w sieci",
+  "UDP {port}": "Port UDP {port}",
+  "Klíč ve zprávě JSON: temp · nebo zařízení/klíč: sklep/temp (pole \"device\" ve zprávě)": "Klucz w wiadomości JSON: temp · lub urządzenie/klucz: piwnica/temp (pole \"device\" w wiadomości)",
+  "adresa = klíč (temp) nebo zařízení/klíč (sklep/temp)": "adres = klucz (temp) lub urządzenie/klucz (piwnica/temp)",
+  "UDP port {0} nelze otevřít: {1}": "Nie można otworzyć portu UDP {0}: {1}",
+  "žádná data na UDP portu {0} za {1} s": "brak danych na porcie UDP {0} od {1} s",
+  "povolený odesílatel musí být IP adresa": "dozwolony nadawca musi być adresem IP",
+  "UDP {0}: přišla data od {1} ({2} hodnot)": "UDP {0}: odebrano dane od {1} ({2} wartości)"
+ }
+}

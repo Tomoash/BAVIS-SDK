@@ -1,0 +1,19 @@
+{
+ "srv": {
+  "SCPI přístroje (příklad)": "SCPI-Messgeräte (Beispiel)",
+  "SCPI přístroj (TCP, příklad)": "SCPI-Messgerät (TCP, Beispiel)",
+  "Povolit zápis": "Schreiben erlauben",
+  "Zápis nastavení do přístroje (napětí, proud, výstup). Vypnuto = jen čtení.": "Einstellungen in das Gerät schreiben (Spannung, Strom, Ausgang). Aus = nur lesen.",
+  "Konec řádku": "Zeilenende",
+  "Ukončení příkazu – většina přístrojů přijímá LF": "Befehlsabschluss – die meisten Geräte akzeptieren LF",
+  "Příkaz SCPI: MEAS:VOLT? (dotaz, jen čtení) · VOLT (nastavení – čte VOLT?, zapisuje VOLT <hodnota>) · OUTP (výstup)": "SCPI-Befehl: MEAS:VOLT? (Abfrage, nur lesen) · VOLT (Einstellung – liest VOLT?, schreibt VOLT <Wert>) · OUTP (Ausgang)",
+  "adresa = příkaz SCPI, např. MEAS:VOLT? nebo VOLT": "Adresse = SCPI-Befehl, z. B. MEAS:VOLT? oder VOLT",
+  "parametr je jen u dotazu (MEAS:VOLT? (@1))": "ein Parameter ist nur bei einer Abfrage erlaubt (MEAS:VOLT? (@1))",
+  "přístroj není připojen": "Gerät nicht verbunden",
+  "přístroj ukončil spojení": "das Gerät hat die Verbindung beendet",
+  "přístroj neodpověděl na {0}": "keine Antwort des Geräts auf {0}",
+  "zápis je u spojení vypnutý (pole Povolit zápis)": "Schreiben ist für diese Verbindung ausgeschaltet (Feld Schreiben erlauben)",
+  "{0} je dotaz – zapisovat jde jen do nastavení bez otazníku": "{0} ist eine Abfrage – nur Einstellungen ohne Fragezeichen können geschrieben werden",
+  "přístroj hlásí chybu po {0}: {1}": "das Gerät meldet einen Fehler nach {0}: {1}"
+ }
+}
