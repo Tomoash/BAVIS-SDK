@@ -1,0 +1,15 @@
+{
+ "srv": {
+  "HTTP JSON (příklad)": "HTTP JSON (príklad)",
+  "Cesta": "Cesta",
+  "Cesta k dokumentu JSON na zařízení": "Cesta k dokumentu JSON na zariadení",
+  "Cesta v dokumentu JSON s tečkami: temperature · boiler.flow.temp · sensors.2.value": "Cesta v dokumente JSON s bodkami: temperature · boiler.flow.temp · sensors.2.value",
+  "prázdná adresa – zadejte cestu s tečkami, např. boiler.flow.temp": "prázdna adresa – zadajte cestu s bodkami, napr. boiler.flow.temp",
+  "použijte písmena, číslice, _ a - oddělené tečkami, např. sensors.2.value": "použite písmená, číslice, _ a - oddelené bodkami, napr. sensors.2.value",
+  "HTTP {0} z {1}": "HTTP {0} z {1}",
+  "{0} není dostupné: {1}": "{0} nie je dostupné: {1}",
+  "dokument JSON je větší než 4 MB": "dokument JSON je väčší ako 4 MB",
+  "odpověď není platný JSON": "odpoveď nie je platný JSON",
+  "{0}: platný JSON, {1} položek na nejvyšší úrovni": "{0}: platný JSON, {1} položiek na najvyššej úrovni"
+ }
+}

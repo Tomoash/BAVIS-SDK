@@ -1,0 +1,27 @@
+{
+ "srv": {
+  "CSV soubor (příklad)": "CSV-Datei (Beispiel)",
+  "CSV soubor – poslední řádek (příklad)": "CSV-Datei – letzte Zeile (Beispiel)",
+  "CSV soubor": "CSV-Datei",
+  "Soubor": "Datei",
+  "Cesta k souboru .csv nebo .txt; relativní cesta je ve složce dat BAVIS": "Pfad zu einer .csv- oder .txt-Datei; ein relativer Pfad liegt im BAVIS-Datenordner",
+  "Oddělovač": "Trennzeichen",
+  "středník ;": "Semikolon ;",
+  "čárka ,": "Komma ,",
+  "tabulátor": "Tabulator",
+  "Desetinná značka": "Dezimalzeichen",
+  "čárka 21,5": "Komma 21,5",
+  "tečka 21.5": "Punkt 21.5",
+  "Max. stáří souboru [s]": "Max. Alter der Datei [s]",
+  "Soubor nezměněný déle = chyba spojení; 0 = nehlídat": "Datei länger unverändert = Verbindungsfehler; 0 = nicht überwachen",
+  "Název sloupce z prvního řádku souboru, např. temp_in": "Spaltenname aus der ersten Zeile der Datei, z. B. temp_in",
+  "adresa = název sloupce z prvního řádku souboru": "Adresse = Spaltenname aus der ersten Zeile der Datei",
+  "zadejte cestu k souboru .csv nebo .txt": "Pfad zu einer .csv- oder .txt-Datei eingeben",
+  "číst jde jen soubory .csv nebo .txt": "nur .csv- oder .txt-Dateien können gelesen werden",
+  "soubor {0} neexistuje": "Datei {0} existiert nicht",
+  "soubor {0} nemá řádek s daty": "Datei {0} hat keine Datenzeile",
+  "soubor {0} se nezměnil {1} s": "Datei {0} hat sich seit {1} s nicht geändert",
+  "soubor {0} nemá sloupce: {1}": "Datei {0} hat keine Spalten: {1}",
+  "{0}: {1} sloupců, poslední řádek {2}": "{0}: {1} Spalten, letzte Zeile {2}"
+ }
+}

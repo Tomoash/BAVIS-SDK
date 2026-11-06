@@ -1,0 +1,27 @@
+{
+ "srv": {
+  "CSV soubor (příklad)": "CSV súbor (príklad)",
+  "CSV soubor – poslední řádek (příklad)": "CSV súbor – posledný riadok (príklad)",
+  "CSV soubor": "CSV súbor",
+  "Soubor": "Súbor",
+  "Cesta k souboru .csv nebo .txt; relativní cesta je ve složce dat BAVIS": "Cesta k súboru .csv alebo .txt; relatívna cesta je v priečinku dát BAVIS",
+  "Oddělovač": "Oddeľovač",
+  "středník ;": "bodkočiarka ;",
+  "čárka ,": "čiarka ,",
+  "tabulátor": "tabulátor",
+  "Desetinná značka": "Desatinná značka",
+  "čárka 21,5": "čiarka 21,5",
+  "tečka 21.5": "bodka 21.5",
+  "Max. stáří souboru [s]": "Max. vek súboru [s]",
+  "Soubor nezměněný déle = chyba spojení; 0 = nehlídat": "Súbor nezmenený dlhšie = chyba spojenia; 0 = nestrážiť",
+  "Název sloupce z prvního řádku souboru, např. temp_in": "Názov stĺpca z prvého riadku súboru, napr. temp_in",
+  "adresa = název sloupce z prvního řádku souboru": "adresa = názov stĺpca z prvého riadku súboru",
+  "zadejte cestu k souboru .csv nebo .txt": "zadajte cestu k súboru .csv alebo .txt",
+  "číst jde jen soubory .csv nebo .txt": "čítať sa dajú len súbory .csv alebo .txt",
+  "soubor {0} neexistuje": "súbor {0} neexistuje",
+  "soubor {0} nemá řádek s daty": "súbor {0} nemá riadok s dátami",
+  "soubor {0} se nezměnil {1} s": "súbor {0} sa nezmenil {1} s",
+  "soubor {0} nemá sloupce: {1}": "súbor {0} nemá stĺpce: {1}",
+  "{0}: {1} sloupců, poslední řádek {2}": "{0}: {1} stĺpcov, posledný riadok {2}"
+ }
+}
