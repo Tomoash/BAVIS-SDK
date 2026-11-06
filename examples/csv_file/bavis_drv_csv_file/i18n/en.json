@@ -1,0 +1,27 @@
+{
+ "srv": {
+  "CSV soubor (příklad)": "CSV file (example)",
+  "CSV soubor – poslední řádek (příklad)": "CSV file – last row (example)",
+  "CSV soubor": "CSV file",
+  "Soubor": "File",
+  "Cesta k souboru .csv nebo .txt; relativní cesta je ve složce dat BAVIS": "Path to a .csv or .txt file; a relative path is in the BAVIS data folder",
+  "Oddělovač": "Separator",
+  "středník ;": "semicolon ;",
+  "čárka ,": "comma ,",
+  "tabulátor": "tab",
+  "Desetinná značka": "Decimal mark",
+  "čárka 21,5": "comma 21,5",
+  "tečka 21.5": "dot 21.5",
+  "Max. stáří souboru [s]": "Max. file age [s]",
+  "Soubor nezměněný déle = chyba spojení; 0 = nehlídat": "File unchanged for longer = connection error; 0 = do not check",
+  "Název sloupce z prvního řádku souboru, např. temp_in": "Column name from the first row of the file, e.g. temp_in",
+  "adresa = název sloupce z prvního řádku souboru": "address = column name from the first row of the file",
+  "zadejte cestu k souboru .csv nebo .txt": "enter the path to a .csv or .txt file",
+  "číst jde jen soubory .csv nebo .txt": "only .csv or .txt files can be read",
+  "soubor {0} neexistuje": "file {0} does not exist",
+  "soubor {0} nemá řádek s daty": "file {0} has no data row",
+  "soubor {0} se nezměnil {1} s": "file {0} has not changed for {1} s",
+  "soubor {0} nemá sloupce: {1}": "file {0} has no columns: {1}",
+  "{0}: {1} sloupců, poslední řádek {2}": "{0}: {1} columns, last row {2}"
+ }
+}

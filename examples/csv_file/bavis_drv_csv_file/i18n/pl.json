@@ -1,0 +1,27 @@
+{
+ "srv": {
+  "CSV soubor (příklad)": "Plik CSV (przykład)",
+  "CSV soubor – poslední řádek (příklad)": "Plik CSV – ostatni wiersz (przykład)",
+  "CSV soubor": "Plik CSV",
+  "Soubor": "Plik",
+  "Cesta k souboru .csv nebo .txt; relativní cesta je ve složce dat BAVIS": "Ścieżka do pliku .csv lub .txt; ścieżka względna jest w folderze danych BAVIS",
+  "Oddělovač": "Separator",
+  "středník ;": "średnik ;",
+  "čárka ,": "przecinek ,",
+  "tabulátor": "tabulator",
+  "Desetinná značka": "Znak dziesiętny",
+  "čárka 21,5": "przecinek 21,5",
+  "tečka 21.5": "kropka 21.5",
+  "Max. stáří souboru [s]": "Maks. wiek pliku [s]",
+  "Soubor nezměněný déle = chyba spojení; 0 = nehlídat": "Plik niezmieniony dłużej = błąd połączenia; 0 = nie sprawdzać",
+  "Název sloupce z prvního řádku souboru, např. temp_in": "Nazwa kolumny z pierwszego wiersza pliku, np. temp_in",
+  "adresa = název sloupce z prvního řádku souboru": "adres = nazwa kolumny z pierwszego wiersza pliku",
+  "zadejte cestu k souboru .csv nebo .txt": "podaj ścieżkę do pliku .csv lub .txt",
+  "číst jde jen soubory .csv nebo .txt": "odczytać można tylko pliki .csv lub .txt",
+  "soubor {0} neexistuje": "plik {0} nie istnieje",
+  "soubor {0} nemá řádek s daty": "plik {0} nie ma wiersza z danymi",
+  "soubor {0} se nezměnil {1} s": "plik {0} nie zmienił się od {1} s",
+  "soubor {0} nemá sloupce: {1}": "plik {0} nie ma kolumn: {1}",
+  "{0}: {1} sloupců, poslední řádek {2}": "{0}: {1} kolumn, ostatni wiersz {2}"
+ }
+}

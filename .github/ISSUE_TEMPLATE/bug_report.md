@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Something in the SDK, a template or an example does not work
+about: Something in the SDK, a guide or an example does not work
 labels: bug
 ---
 

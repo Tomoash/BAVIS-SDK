@@ -1,0 +1,69 @@
+name: BAVIS SDK – check, test and build driver packages
+description: Runs bavis sdk check, test and (optionally) build for BAVIS driver packages inside the BAVIS Docker image.
+author: Benešl Automation
+branding:
+  icon: package
+  color: blue
+
+inputs:
+  image:
+    description: BAVIS Docker image with the SDK (BAVIS 4.0 or newer), e.g. ghcr.io/tomoash/bavis:4
+    required: true
+  workspace:
+    description: >-
+      Workspace folder(s) relative to the repository root – each holds bavis_drv_<name>/ and tests/.
+      Several folders and shell patterns are allowed, separated by spaces, e.g. "examples/* drivers/*".
+    required: false
+    default: "."
+  strict:
+    description: Treat warnings of bavis sdk check as errors (recommended for CI)
+    required: false
+    default: "true"
+  build:
+    description: Build the .bavispkg files into <workspace>/dist/ (unsigned)
+    required: false
+    default: "false"
+  registry-token:
+    description: Token for docker login when the image is in a private registry (empty = no login)
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Log in to the image registry
+      if: inputs.registry-token != ''
+      shell: bash
+      env:
+        IMAGE: ${{ inputs.image }}
+        TOKEN: ${{ inputs.registry-token }}
+        ACTOR: ${{ github.actor }}
+      run: printf '%s' "$TOKEN" | docker login "${IMAGE%%/*}" -u "$ACTOR" --password-stdin
+
+    - name: bavis sdk check / test / build
+      shell: bash
+      env:
+        IMAGE: ${{ inputs.image }}
+        WORKSPACES: ${{ inputs.workspace }}
+        STRICT: ${{ inputs.strict }}
+        BUILD: ${{ inputs.build }}
+      run: |
+        set -euo pipefail
+        docker pull --quiet "$IMAGE" >/dev/null
+        sdk() { docker run --rm -v "$GITHUB_WORKSPACE:/work" -w /work --user "$(id -u):$(id -g)" "$IMAGE" sdk "$@"; }
+        sdk info
+        cd "$GITHUB_WORKSPACE"
+        found=0
+        for ws in $WORKSPACES; do
+          [ -d "$ws" ] || continue
+          found=1
+          echo "::group::$ws"
+          if [ "$STRICT" = "true" ]; then sdk check --strict "$ws"; else sdk check "$ws"; fi
+          sdk test "$ws"
+          if [ "$BUILD" = "true" ]; then sdk build "$ws"; fi
+          echo "::endgroup::"
+        done
+        if [ "$found" = 0 ]; then
+          echo "::error::no workspace folder found for: $WORKSPACES"
+          exit 1
+        fi
