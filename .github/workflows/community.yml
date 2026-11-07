@@ -1,0 +1,114 @@
+# Community set-up of this repository, run by hand (Actions → community → Run workflow):
+#   labels  – create or update the labels used by the issue and discussion forms and CONTRIBUTING (also on every change of this file)
+#   welcome – post the welcome discussion in Announcements (once; needs Discussions enabled in Settings → General → Features)
+# Repository settings that need an administrator (enabling Discussions, the category "Drivers" with slug "drivers", private
+# vulnerability reporting, pinning the welcome post) cannot be done with the workflow token – the maintainer does them in Settings.
+name: community
+
+on:
+  workflow_dispatch:
+    inputs:
+      welcome:
+        description: "Also post the welcome discussion in Announcements (Discussions must be enabled)"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: [.github/workflows/community.yml]
+
+permissions:
+  issues: write
+  discussions: write
+  contents: read
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = [
+              ["bug", "d73a4a", "Something in the SDK, a guide or an example does not work"],
+              ["driver", "1d76db", "A request for a driver, or work on one"],
+              ["good first issue", "7057ff", "Small and well described – good for a first contribution"],
+              ["help wanted", "008672", "Nobody works on it yet – contributions welcome"],
+              ["docs", "0075ca", "Guides, API reference, README"],
+              ["translation", "c5def5", "Texts for the operator or guides in another language"],
+              ["needs-docs", "fbca04", "Waiting for the official protocol documentation of the manufacturer"],
+              ["needs-hardware-test", "e99695", "Needs a test with a real device"],
+              ["catalogue", "0e8a16", "Accepted – waiting for signing and publishing in the public catalogue"],
+            ];
+            const { owner, repo } = context.repo;
+            for (const [name, color, description] of labels) {
+              try {
+                await github.rest.issues.getLabel({ owner, repo, name });
+                await github.rest.issues.updateLabel({ owner, repo, name, color, description });
+                core.info(`updated ${name}`);
+              } catch (e) {
+                if (e.status !== 404) throw e;
+                await github.rest.issues.createLabel({ owner, repo, name, color, description });
+                core.info(`created ${name}`);
+              }
+            }
+
+  welcome:
+    if: github.event_name == 'workflow_dispatch' && inputs.welcome
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "Welcome to the BAVIS SDK community / Vítejte";
+            const body = [
+              "This is the place for everybody who connects devices to BAVIS – integrators, engineers, makers and students.",
+              "",
+              "* **Q&A** – ask how to write, test, build or install a driver.",
+              "* **Drivers** – wish for a device or protocol and vote with 👍 on the first post; the most wanted ones get done first.",
+              "* **Ideas** – improvements of the SDK, the `bavis-sdk` command and the guides.",
+              "* **Show and tell** – show a driver or a project you built.",
+              "",
+              "Start with the guides in [docs/en](https://github.com/Tomoash/BAVIS-SDK/tree/main/docs/en) and the example " +
+              "[hello](https://github.com/Tomoash/BAVIS-SDK/tree/main/examples/hello); `bavis-sdk new` creates a working skeleton " +
+              "with tests in a minute. Drivers sent as pull requests are reviewed, signed and published in the public catalogue – " +
+              "see [CONTRIBUTING.md](https://github.com/Tomoash/BAVIS-SDK/blob/main/CONTRIBUTING.md).",
+              "",
+              "---",
+              "",
+              "Tady je místo pro všechny, kdo připojují zařízení k BAVIS. Ptejte se v **Q&A**, přejte si zařízení v **Drivers** " +
+              "(hlasujte 👍), nápady pište do **Ideas** a pochlubte se v **Show and tell**. Začněte návody v " +
+              "[docs/cs](https://github.com/Tomoash/BAVIS-SDK/tree/main/docs/cs) a příkladem " +
+              "[hello](https://github.com/Tomoash/BAVIS-SDK/tree/main/examples/hello). Postup pro přispěvatele je v " +
+              "[CONTRIBUTING.cs.md](https://github.com/Tomoash/BAVIS-SDK/blob/main/CONTRIBUTING.cs.md). " +
+              "Psát můžete česky i anglicky.",
+            ].join("\n");
+            const { owner, repo } = context.repo;
+            const q = await github.graphql(`query($owner: String!, $repo: String!) {
+              repository(owner: $owner, name: $repo) {
+                id hasDiscussionsEnabled
+                discussionCategories(first: 25) { nodes { id name slug } }
+                discussions(first: 50) { nodes { title url } }
+              } }`, { owner, repo });
+            const r = q.repository;
+            if (!r.hasDiscussionsEnabled) {
+              core.setFailed("Discussions are not enabled (Settings → General → Features → Discussions).");
+              return;
+            }
+            const old = r.discussions.nodes.find(d => d.title === title);
+            if (old) {
+              core.info(`already posted: ${old.url}`);
+              return;
+            }
+            const cat = r.discussionCategories.nodes.find(c => c.slug === "announcements");
+            if (!cat) {
+              core.setFailed("No category with slug 'announcements'.");
+              return;
+            }
+            const m = await github.graphql(`mutation($repo: ID!, $cat: ID!, $title: String!, $body: String!) {
+              createDiscussion(input: {repositoryId: $repo, categoryId: $cat, title: $title, body: $body}) { discussion { url } } }`,
+              { repo: r.id, cat: cat.id, title, body });
+            core.info(`posted: ${m.createDiscussion.discussion.url} – pin it in the discussion (Pin discussion)`);
+            const slugs = r.discussionCategories.nodes.map(c => c.slug);
+            if (!slugs.includes("drivers")) core.warning("Category with slug 'drivers' is missing – add it in Discussions → Categories.");
