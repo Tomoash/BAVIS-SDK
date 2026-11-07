@@ -33,7 +33,7 @@ Windows: `C:\BAVIS\bavis-sdk.cmd …` · Linux: `/opt/bavis/bavis-sdk …` · Do
 | [docs/en](docs/en/README.md) | guides: getting started, your first driver, patterns, testing, building and installing, CI and publishing |
 | [docs/cs](docs/cs/README.md) | the same guides in Czech |
 | [docs/drivers.md](docs/drivers.md) | API reference (`bavis.sdk`, `bavis.sdk.testing`, package layout, versioning, rules) |
-| [examples](examples/README.md) | complete drivers with tests: HTTP JSON, SCPI instruments, UDP push sensors, CSV files |
+| [examples](examples/README.md) | nine complete drivers with tests: from *hello* to Modbus ASCII, Prometheus, NTP and P1 smart meters |
 | [drivers](drivers/README.md) | community drivers contributed to the public catalogue |
 | [action.yml](action.yml) | GitHub Action: check, test and build driver packages with the BAVIS Docker image |
 
@@ -45,6 +45,11 @@ Windows: `C:\BAVIS\bavis-sdk.cmd …` · Linux: `/opt/bavis/bavis-sdk …` · Do
 | [scpi](examples/scpi) | text protocol over TCP (lab instruments), a link shared by reads and writes, guarded writes checked with `SYST:ERR?` |
 | [udp_json](examples/udp_json) | a device that pushes data, only `open` / `close` / `poll`, value age, sender filter |
 | [csv_file](examples/csv_file) | no network (`transport="none"`), files in the data folder, tag import by browsing, caching |
+| [hello](examples/hello) | **start here** – the smallest complete driver, no device needed |
+| [modbus_ascii](examples/modbus_ascii) | serial line (RS-232 / RS-485 or a `socket://` converter), block reads, checksum, guarded writes |
+| [prometheus](examples/prometheus) | text format over HTTP(S), secret token, tag import by browsing |
+| [ntp](examples/ntp) | binary protocol over UDP, answer validation, query interval independent of the read cycle |
+| [dsmr_p1](examples/dsmr_p1) | a meter pushing telegrams on a serial line, frames, CRC-16, value age |
 
 Every example passes `bavis-sdk check --strict` and its own tests.
 
@@ -58,6 +63,11 @@ part of the SDK yet.
 
 Community drivers are welcome – read [CONTRIBUTING.md](CONTRIBUTING.md). Drivers accepted into the public catalogue are reviewed
 and signed by Benešl Automation.
+
+* Questions and help: [Discussions → Q&A](https://github.com/Tomoash/BAVIS-SDK/discussions/categories/q-a)
+* Wishes for devices and protocols (vote with 👍): [Discussions → Drivers](https://github.com/Tomoash/BAVIS-SDK/discussions/categories/drivers)
+* Show what you built: [Discussions → Show and tell](https://github.com/Tomoash/BAVIS-SDK/discussions/categories/show-and-tell)
+* Small tasks to start with: [`good first issue`](https://github.com/Tomoash/BAVIS-SDK/labels/good%20first%20issue)
 
 ## Licence
 
@@ -94,5 +104,7 @@ Návody česky jsou v [docs/cs](docs/cs/README.md): začínáme, první driver k
 a instalace, CI a zveřejnění. Reference API (anglicky) je [docs/drivers.md](docs/drivers.md), hotové příklady s testy
 v [examples](examples/README.md).
 
-Příspěvky komunity jsou vítané, postup je v [CONTRIBUTING.md](CONTRIBUTING.md). Kontakt:
+Příspěvky komunity jsou vítané, postup je v [CONTRIBUTING.cs.md](CONTRIBUTING.cs.md). Dotazy patří do
+[Discussions → Q&A](https://github.com/Tomoash/BAVIS-SDK/discussions/categories/q-a), přání zařízení do
+[Discussions → Drivers](https://github.com/Tomoash/BAVIS-SDK/discussions/categories/drivers). Kontakt:
 [benesl@benesl-automation.cz](mailto:benesl@benesl-automation.cz), web [benesl-automation.cz](https://benesl-automation.cz).

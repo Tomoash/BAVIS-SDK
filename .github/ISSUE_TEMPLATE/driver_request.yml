@@ -1,0 +1,56 @@
+name: Driver or device request
+description: Start work on a driver for the public catalogue, or ask for a protocol or device
+labels: [driver]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        First check that BAVIS does not already support the device (Objects → Communication → New connection) and search the
+        existing issues and Discussions → Drivers. Just collecting wishes? A discussion in the category Drivers is enough.
+        Česky můžete psát také.
+  - type: input
+    id: device
+    attributes:
+      label: Device or protocol
+      placeholder: manufacturer, model, protocol
+    validations:
+      required: true
+  - type: textarea
+    id: docs
+    attributes:
+      label: Protocol documentation
+      description: >-
+        Link to the manufacturer's documentation or the standard (register map, command list, API). Drivers are written only
+        from official documentation.
+    validations:
+      required: true
+  - type: dropdown
+    id: link
+    attributes:
+      label: How it connects
+      multiple: true
+      options:
+        - Ethernet / Wi-Fi (TCP, UDP, HTTP)
+        - Serial (RS-232 / RS-485)
+        - USB
+        - Cloud API (official)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: What you need to read or write
+      placeholder: temperatures, setpoints, alarms, counters …
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: Who writes the driver
+      options:
+        - I will write it (assign me)
+        - I can help test it with a real device
+        - I only need it
+    validations:
+      required: true
