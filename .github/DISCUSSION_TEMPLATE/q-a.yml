@@ -1,0 +1,25 @@
+title: "[Q] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask anything about writing, testing, building or installing a driver. Česky můžete psát také.
+        Bugs go to an issue (template *Bug report*); security problems privately by e-mail (SECURITY.md).
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What do you want to achieve, what did you try?
+    validations:
+      required: true
+  - type: textarea
+    id: info
+    attributes:
+      label: Output of `bavis-sdk info`
+      render: text
+  - type: textarea
+    id: code
+    attributes:
+      label: Code, output of `bavis-sdk check` or error message
+      description: Remove passwords, tokens and addresses you do not want to publish.
+      render: text

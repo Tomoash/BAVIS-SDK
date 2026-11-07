@@ -1,0 +1,62 @@
+name: Bug report
+description: Something in the SDK, a guide or an example does not work
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for the report. Questions ("how do I …") belong to Discussions → Q&A. Security vulnerabilities: privately by
+        e-mail, see SECURITY.md. Česky můžete psát také.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Error message, wrong value, failing check or test.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. bavis-sdk new …
+        2. …
+    validations:
+      required: true
+  - type: textarea
+    id: info
+    attributes:
+      label: Output of `bavis-sdk info`
+      description: SDK API, BAVIS version, Python and pytest.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where
+      options:
+        - SDK (bavis.sdk, bavis-sdk command)
+        - Guide or API reference
+        - An example (examples/)
+        - A community driver (drivers/)
+        - GitHub Action (action.yml)
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system / installation
+      placeholder: Windows 11, Linux (Debian 12), Docker …
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Remove passwords, tokens and IP addresses you do not want to publish.
+      render: text
