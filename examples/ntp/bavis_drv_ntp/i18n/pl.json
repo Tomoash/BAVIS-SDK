@@ -1,0 +1,14 @@
+{
+ "srv": {
+  "NTP časový server (příklad)": "Serwer czasu NTP (przykład)",
+  "offset_ms (posun hodin) · delay_ms · stratum · leap · synced (bool) · root_delay_ms · root_dispersion_ms · refid (text) · server_time": "offset_ms (przesunięcie zegara) · delay_ms · stratum · leap · synced (bool) · root_delay_ms · root_dispersion_ms · refid (tekst) · server_time",
+  "Interval dotazů [s]": "Odstęp zapytań [s]",
+  "Jak často se ptát serveru, nezávisle na periodě čtení; veřejné servery: aspoň 64 s": "Jak często pytać serwer, niezależnie od cyklu odczytu; serwery publiczne: co najmniej 64 s",
+  "adresa = offset_ms, delay_ms, stratum, leap, synced, root_delay_ms, root_dispersion_ms, refid nebo server_time": "adres = offset_ms, delay_ms, stratum, leap, synced, root_delay_ms, root_dispersion_ms, refid lub server_time",
+  "refid je text – tag musí mít typ string": "refid jest tekstem – tag musi mieć typ string",
+  "server {0} neodpověděl": "serwer {0} nie odpowiedział",
+  "server odmítá dotazy ({0}) – prodlužte interval nebo použijte jiný server": "serwer odrzuca zapytania ({0}) – wydłuż odstęp lub użyj innego serwera",
+  "odpověď není od NTP serveru": "odpowiedź nie pochodzi z serwera NTP",
+  "{0}: stratum {1}, posun {2} ms, zpoždění {3} ms": "{0}: stratum {1}, przesunięcie {2} ms, opóźnienie {3} ms"
+ }
+}

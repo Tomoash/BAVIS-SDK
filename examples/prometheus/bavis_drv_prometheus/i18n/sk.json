@@ -1,0 +1,18 @@
+{
+ "srv": {
+  "Prometheus metriky (příklad)": "Prometheus metriky (príklad)",
+  "Prometheus exportér (HTTP, příklad)": "Prometheus exportér (HTTP, príklad)",
+  "Název metriky: node_load1 · se štítky: node_filesystem_avail_bytes{mountpoint=\"/\"} (víc shod = součet)": "Názov metriky: node_load1 · so štítkami: node_filesystem_avail_bytes{mountpoint=\"/\"} (viac zhôd = súčet)",
+  "Protokol": "Protokol",
+  "Cesta": "Cesta",
+  "Jen když exportér vyžaduje přihlášení; prázdné = bez hlavičky Authorization": "Iba keď exportér vyžaduje prihlásenie; prázdne = bez hlavičky Authorization",
+  "adresa = název metriky, případně se štítky: node_load1 nebo http_requests_total{code=\"200\"}": "adresa = názov metriky, prípadne so štítkami: node_load1 alebo http_requests_total{code=\"200\"}",
+  "štítky ve tvaru {název=\"hodnota\", …}": "štítky v tvare {názov=\"hodnota\", …}",
+  "metrika je číslo – typ tagu nesmí být string": "metrika je číslo – typ tagu nesmie byť string",
+  "HTTP {0} z {1}": "HTTP {0} z {1}",
+  "exportér odmítl přístup (HTTP {0}) – zkontrolujte token": "exportér odmietol prístup (HTTP {0}) – skontrolujte token",
+  "{0} není dostupné: {1}": "{0} nie je dostupné: {1}",
+  "odpověď je větší než 8 MB": "odpoveď je väčšia ako 8 MB",
+  "{0}: {1} metrik, {2} hodnot": "{0}: {1} metrík, {2} hodnôt"
+ }
+}

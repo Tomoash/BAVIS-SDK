@@ -15,7 +15,8 @@ def poll(self) -> dict:
     return {t.name: convert(resolve(doc, t.address), t.type) for t in self.tags}
 ```
 
-Příklad: [`http_json`](../../examples/http_json).
+Příklad: [`http_json`](../../examples/http_json). Binární protokol přes UDP se `struct`, kontrolou, že odpověď patří k dotazu,
+a intervalem dotazů nezávislým na cyklu čtení: [`ntp`](../../examples/ntp).
 
 ## Dotaz a odpověď – dotaz na každý tag
 
@@ -48,6 +49,17 @@ jedním dotazem (najdete v dokumentaci protokolu).
 Tagy mohou mít vlastní periodu čtení (`Tag.poll_ms`). `self.every(tag)` vrátí, každý kolikátý cyklus spojení se má tag číst,
 a `self.due(every)`, zda je to v tomto cyklu – tak jde pomalé tagy číst méně často.
 
+Příklad: [`modbus_ascii`](../../examples/modbus_ascii) – bloky podle tabulky registrů, LRC, výjimky protokolu jako hlášky
+pro obsluhu.
+
+## Sériové linky (RS-232 / RS-485)
+
+S `transport="serial"` použije formulář spojení pole jádra `serial_port`, `baudrate`, `parity` a `stopbits` (`conn.serial_port`
+…). Knihovnu pyserial importujte až ve funkci, ne na úrovni modulu. Přijímejte i `socket://adresa:port` – převodníky
+RS-485/Ethernet v transparentním režimu jsou běžné a testy pak použijí náhradní zařízení na TCP bez hardwaru i bez pyserial.
+Příklady: [`modbus_ascii`](../../examples/modbus_ascii) (dotaz a odpověď), [`dsmr_p1`](../../examples/dsmr_p1) (elektroměr posílá
+sám).
+
 ## Zařízení, která posílají data sama
 
 Senzory s ESP32, UDP telegramy, některé elektroměry: zařízení posílá, BAVIS poslouchá. Stačí běžné `open` / `close` / `poll`:
@@ -71,7 +83,8 @@ def poll(self) -> dict:
     return out
 ```
 
-Příklad: [`udp_json`](../../examples/udp_json) – směrování podle zařízení, filtr odesílatele, stáří hodnot.
+Příklad: [`udp_json`](../../examples/udp_json) – směrování podle zařízení, filtr odesílatele, stáří hodnot. Proud bajtů
+se značkami začátku a konce a CRC (elektroměr na sériové lince): [`dsmr_p1`](../../examples/dsmr_p1).
 
 Naslouchající port přijme data od kohokoli v síti. Nabídněte filtr odesílatele a v nápovědě napište, že port patří jen do
 důvěryhodné sítě.
@@ -123,12 +136,14 @@ srozumitelnou hlášku místo chyby).
 ## Hesla a tokeny
 
 Heslo, API klíč nebo token patří do pole `FieldSpec("token", "Token", "password", secret=True)`. BAVIS ho pak maskuje v API,
-exportech CSV, porovnání revizí i zálohách. Nikdy ho nepište do kódu, logu ani do textu chyby.
+exportech CSV, porovnání revizí i zálohách. Nikdy ho nepište do kódu, logu ani do textu chyby. Klíč uveďte i
+v `DriverSpec.secrets`. Příklad: [`prometheus`](../../examples/prometheus) (token Bearer).
 
 ## Simulace
 
 `DriverSpec.sim="local"` (výchozí) znamená, že v režimu simulace se spojení smí připojit jen na `127.0.0.1` – tedy na váš
-simulátor, ne na skutečné zařízení. Uživatel může u spojení zapnout i **Simulovat** a tagy pak běží virtuálně bez driveru.
+simulátor, ne na skutečné zařízení. `sim="free"` je pro drivery bez fyzického spojení (výpočty, generátory – příklad
+[`hello`](../../examples/hello)). Uživatel může u spojení zapnout i **Simulovat** a tagy pak běží virtuálně bez driveru.
 
 ## Stav a diagnostika
 

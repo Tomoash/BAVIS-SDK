@@ -1,10 +1,12 @@
 # Examples / Příklady
 
 Complete driver packages with tests. Each folder is a *workspace*: `bavis_drv_<name>/` (the package) and `tests/` (pytest against a
-fake device). They use only the Python standard library and `bavis.sdk`, and pass `bavis-sdk check --strict`.
+fake device). They use only the Python standard library and `bavis.sdk` (the serial examples use pyserial for COM ports,
+imported only when a COM port is opened – their tests do not need it), and pass `bavis-sdk check --strict`.
 
 Kompletní balíčky driverů s testy. Každá složka je *pracovní složka*: `bavis_drv_<název>/` (balíček) a `tests/` (pytest proti
-náhradnímu zařízení). Používají jen standardní knihovnu Pythonu a `bavis.sdk` a projdou `bavis-sdk check --strict`.
+náhradnímu zařízení). Používají jen standardní knihovnu Pythonu a `bavis.sdk` (sériové příklady pyserial pro COM port, importovaný
+až při jeho otevření – testy ho nepotřebují) a projdou `bavis-sdk check --strict`.
 
 | Example | Device | What it shows |
 | --- | --- | --- |
@@ -12,6 +14,11 @@ náhradnímu zařízení). Používají jen standardní knihovnu Pythonu a `bavi
 | [scpi](scpi) | laboratory instruments (power supplies, multimeters) on TCP port 5025 | one query per tag, a link shared by `poll()` and `write()` with a lock, writes off by default and checked with `SYST:ERR?`, `bool` and `select` fields |
 | [udp_json](udp_json) | ESP32 / scripts sending JSON datagrams | a push device with only `open` / `close` / `poll`, partial updates, value age, sender filter, own `validate` |
 | [csv_file](csv_file) | a CSV log written by another program | `transport="none"`, paths in the data folder, `browse` + `items_to_tags`, cache by modification time |
+| [hello](hello) | none – values generated in memory (**start here**) | the smallest complete driver: `poll`, `write` only to `rw` tags, `transport="none"`, `sim="free"` |
+| [modbus_ascii](modbus_ascii) | controllers, panel meters and drives with Modbus ASCII on RS-232 / RS-485 | `transport="serial"`, pyserial imported inside a function, `socket://` converters (tests without hardware or pyserial), `merge_ranges` block reads, LRC, protocol exceptions, guarded writes |
+| [prometheus](prometheus) | Prometheus exporters: servers (node_exporter, windows_exporter), applications, network devices | a text format over HTTP(S), a secret token field, `browse` + `items_to_tags`, metrics selected by labels |
+| [ntp](ntp) | time servers (GPS clocks, PLCs, the plant NTP server) | a binary protocol over UDP with `struct`, answer validation, a query interval independent of the read cycle, kiss codes |
+| [dsmr_p1](dsmr_p1) | smart electricity meters with a P1 port (DSMR – NL, BE, LU, SE) | a push device on a byte stream, frames with start and end markers, CRC-16, recovery from broken telegrams, value age |
 
 ```
 bavis-sdk check --strict examples/scpi

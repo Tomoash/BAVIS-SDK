@@ -1,5 +1,11 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Question or help with a driver
+    url: https://github.com/Tomoash/BAVIS-SDK/discussions/categories/q-a
+    about: Ask in Discussions → Q&A – other integrators can answer and find it later.
+  - name: Wish for a device or protocol
+    url: https://github.com/Tomoash/BAVIS-SDK/discussions/categories/drivers
+    about: Collect votes and documentation in Discussions → Drivers before somebody starts a driver.
   - name: Security vulnerability
     url: https://github.com/Tomoash/BAVIS-SDK/blob/main/SECURITY.md
     about: Please report security issues privately by e-mail, not in a public issue.

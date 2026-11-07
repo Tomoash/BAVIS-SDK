@@ -1,0 +1,20 @@
+title: "[Idea] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ideas for the SDK, the `bavis-sdk` command, the guides, the examples or the catalogue. A device or protocol? Use the
+        category Drivers. Česky můžete psát také.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would it solve
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: How should it work? An example of code or a command helps.
+    validations:
+      required: true

@@ -1,0 +1,18 @@
+{
+ "srv": {
+  "Prometheus metriky (příklad)": "Metryki Prometheus (przykład)",
+  "Prometheus exportér (HTTP, příklad)": "Eksporter Prometheus (HTTP, przykład)",
+  "Název metriky: node_load1 · se štítky: node_filesystem_avail_bytes{mountpoint=\"/\"} (víc shod = součet)": "Nazwa metryki: node_load1 · z etykietami: node_filesystem_avail_bytes{mountpoint=\"/\"} (kilka dopasowań = suma)",
+  "Protokol": "Protokół",
+  "Cesta": "Ścieżka",
+  "Jen když exportér vyžaduje přihlášení; prázdné = bez hlavičky Authorization": "Tylko gdy eksporter wymaga logowania; puste = bez nagłówka Authorization",
+  "adresa = název metriky, případně se štítky: node_load1 nebo http_requests_total{code=\"200\"}": "adres = nazwa metryki, opcjonalnie z etykietami: node_load1 lub http_requests_total{code=\"200\"}",
+  "štítky ve tvaru {název=\"hodnota\", …}": "etykiety w postaci {nazwa=\"wartość\", …}",
+  "metrika je číslo – typ tagu nesmí být string": "metryka jest liczbą – typ tagu nie może być string",
+  "HTTP {0} z {1}": "HTTP {0} z {1}",
+  "exportér odmítl přístup (HTTP {0}) – zkontrolujte token": "eksporter odmówił dostępu (HTTP {0}) – sprawdź token",
+  "{0} není dostupné: {1}": "{0} jest niedostępny: {1}",
+  "odpověď je větší než 8 MB": "odpowiedź jest większa niż 8 MB",
+  "{0}: {1} metrik, {2} hodnot": "{0}: {1} metryk, {2} wartości"
+ }
+}

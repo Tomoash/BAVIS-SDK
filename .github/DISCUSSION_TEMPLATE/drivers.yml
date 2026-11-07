@@ -1,0 +1,46 @@
+title: "[Driver] "
+labels: [driver]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Wish for a device or protocol, collect votes (👍 on the first post) and documentation. When somebody starts writing the
+        driver, a maintainer turns the discussion into an issue. Check first that BAVIS does not already support it
+        (Objects → Communication → New connection). Česky můžete psát také.
+  - type: input
+    id: device
+    attributes:
+      label: Device or protocol
+      placeholder: manufacturer, model, protocol
+    validations:
+      required: true
+  - type: textarea
+    id: docs
+    attributes:
+      label: Official documentation
+      description: Link to the register map, command list or API of the manufacturer, or the standard. Drivers are written only from official documentation.
+  - type: dropdown
+    id: link
+    attributes:
+      label: How it connects
+      multiple: true
+      options:
+        - Ethernet / Wi-Fi (TCP, UDP, HTTP)
+        - Serial (RS-232 / RS-485)
+        - USB
+        - Cloud API (official)
+        - Other
+  - type: textarea
+    id: use
+    attributes:
+      label: What would you use it for
+      placeholder: monitoring a heat pump, energy of a building, laboratory instruments …
+    validations:
+      required: true
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Can you help?
+      options:
+        - label: I can write the driver (or part of it)
+        - label: I have the device and can test a driver with it

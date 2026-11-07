@@ -15,7 +15,8 @@ def poll(self) -> dict:
     return {t.name: convert(resolve(doc, t.address), t.type) for t in self.tags}
 ```
 
-Example: [`http_json`](../../examples/http_json).
+Example: [`http_json`](../../examples/http_json). A binary protocol over UDP with `struct`, a check that the answer belongs to
+the query and a query interval independent of the read cycle: [`ntp`](../../examples/ntp).
 
 ## Request/response – one request per tag
 
@@ -49,6 +50,15 @@ request (see the protocol documentation).
 Tags may have their own read period (`Tag.poll_ms`). `self.every(tag)` returns every how many cycles of the connection the tag is
 due, and `self.due(every)` whether it is due in this cycle – so slow tags can be read less often.
 
+Example: [`modbus_ascii`](../../examples/modbus_ascii) – blocks per register table, LRC, protocol exceptions as operator messages.
+
+## Serial lines (RS-232 / RS-485)
+
+With `transport="serial"` the connection form uses the core fields `serial_port`, `baudrate`, `parity` and `stopbits`
+(`conn.serial_port` …). Import pyserial inside a function, not at module level. Accept `socket://host:port` too – serial-to-Ethernet
+converters in transparent mode are common, and the tests can then use a TCP fake device without hardware or pyserial.
+Examples: [`modbus_ascii`](../../examples/modbus_ascii) (request/response), [`dsmr_p1`](../../examples/dsmr_p1) (the meter pushes).
+
 ## Devices that push data
 
 ESP32 sensors, UDP telegrams, some energy meters: the device sends, BAVIS listens. The usual `open` / `close` / `poll` is enough:
@@ -72,7 +82,8 @@ def poll(self) -> dict:
     return out
 ```
 
-Example: [`udp_json`](../../examples/udp_json) – routing by device, a sender filter, value age.
+Example: [`udp_json`](../../examples/udp_json) – routing by device, a sender filter, value age. A byte stream with start and
+end markers and a CRC (a smart meter on a serial line): [`dsmr_p1`](../../examples/dsmr_p1).
 
 A listening port accepts data from anyone in the network. Offer a sender filter and say in the help text that the port belongs to
 a trusted network only.
@@ -124,12 +135,15 @@ conversion and numbering of duplicates. When the interface is used by a running 
 ## Passwords and tokens
 
 A password, API key or token belongs to a field `FieldSpec("token", "Token", "password", secret=True)`. BAVIS then masks it in the
-API, CSV exports, revision diffs and backups. Never put it into code, logs or error texts.
+API, CSV exports, revision diffs and backups. Never put it into code, logs or error texts. List the key in
+`DriverSpec.secrets` too. Example: [`prometheus`](../../examples/prometheus) (bearer token).
 
 ## Simulation
 
 `DriverSpec.sim="local"` (default) means that in simulation mode the connection may only connect to `127.0.0.1` – your simulator,
-not the real device. The user can also switch on **Simulate** on a connection; its tags then run virtually without the driver.
+not the real device. `sim="free"` is for drivers without a physical link (calculations, generators – example
+[`hello`](../../examples/hello)). The user can also switch on **Simulate** on a connection; its tags then run virtually without
+the driver.
 
 ## Status and diagnostics
 
