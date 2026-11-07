@@ -1,0 +1,21 @@
+title: "[Show] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Show a driver, a package repository, a catalogue or a project built on the BAVIS SDK. Screenshots welcome – remove
+        customer names and private data first. Česky můžete psát také.
+  - type: textarea
+    id: what
+    attributes:
+      label: What you built
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link (repository, catalogue, article)
+  - type: textarea
+    id: devices
+    attributes:
+      label: Devices and BAVIS version it runs with

@@ -1,0 +1,26 @@
+{
+ "srv": {
+  "Elektroměr P1 / DSMR (příklad)": "Licznik energii P1 / DSMR (przykład)",
+  "Elektroměr s portem P1 / DSMR (příklad)": "Licznik energii z portem P1 / DSMR (przykład)",
+  "Kód OBIS: 1-0:1.8.1 energie odebraná T1 · 1-0:1.7.0 příkon · 1-0:32.7.0 napětí L1 · 0-1:24.2.1 plyn": "Kod OBIS: 1-0:1.8.1 energia pobrana T1 · 1-0:1.7.0 moc · 1-0:32.7.0 napięcie L1 · 0-1:24.2.1 gaz",
+  "COM port (nebo socket://adresa:port převodníku P1)": "Port COM (lub socket://adres:port konwertera P1)",
+  "Rychlost [Bd]": "Prędkość [Bd]",
+  "115 200 (DSMR 4 a 5)": "115 200 (DSMR 4 i 5)",
+  "9 600 (DSMR 2.2 a 3)": "9 600 (DSMR 2.2 i 3)",
+  "Datové bity": "Bity danych",
+  "8 (DSMR 4 a 5)": "8 (DSMR 4 i 5)",
+  "7 (DSMR 2.2 a 3)": "7 (DSMR 2.2 i 3)",
+  "Parita": "Parzystość",
+  "N – žádná": "N – brak",
+  "E – sudá": "E – parzysta",
+  "Max. stáří telegramu [s]": "Maks. wiek telegramu [s]",
+  "Bez platného telegramu po tuto dobu = chyba spojení (elektroměr posílá každou 1 s nebo 10 s)": "Brak prawidłowego telegramu przez ten czas = błąd połączenia (licznik wysyła co 1 s lub 10 s)",
+  "adresa = kód OBIS, např. 1-0:1.8.1 (energie tarif 1) nebo 1-0:1.7.0 (příkon)": "adres = kod OBIS, np. 1-0:1.8.1 (energia taryfa 1) lub 1-0:1.7.0 (moc)",
+  "chybí COM port (nebo socket://adresa:port převodníku P1)": "brak portu COM (lub socket://adres:port konwertera P1)",
+  "žádný platný telegram za {0} s": "brak prawidłowego telegramu od {0} s",
+  "chybí knihovna pyserial pro COM port": "brak biblioteki pyserial dla portu COM",
+  "převodník P1 ukončil spojení": "konwerter P1 zamknął połączenie",
+  "port P1 jde jen číst": "port P1 jest tylko do odczytu",
+  "{0}: telegram {1}, {2} hodnot": "{0}: telegram {1}, {2} wartości"
+ }
+}

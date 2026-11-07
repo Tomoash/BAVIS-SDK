@@ -1,0 +1,11 @@
+{
+ "srv": {
+  "Hello BAVIS (příklad)": "Hello BAVIS (example)",
+  "counter (počet cyklů) · sine (sinus −1 až 1) · setpoint (zápis, přístup rw) · greeting (text)": "counter (number of cycles) · sine (sine wave −1 to 1) · setpoint (write, access rw) · greeting (text)",
+  "Perioda sinusu [s]": "Sine period [s]",
+  "Za jak dlouho sine projde celou vlnu": "Time for one full wave of sine",
+  "adresa = counter, sine, setpoint nebo greeting": "address = counter, sine, setpoint or greeting",
+  "greeting je text – tag musí mít typ string": "greeting is text – the tag type must be string",
+  "{0} jde jen číst – zapisovat lze do setpoint s přístupem rw": "{0} is read only – only setpoint with access rw can be written"
+ }
+}
